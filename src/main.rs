@@ -1,7 +1,7 @@
 fn main() {
-    print_hello();
+    print_hello(String::from("Sanjar"));
 }
 
-fn print_hello() {
-    println!("Hello, world!");
+fn print_hello(name: String) {
+    println!("Hello, {name}");
 }
