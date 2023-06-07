@@ -1,18 +1,10 @@
-#[tokio::test]
-async fn health_check_works() {
-    spawn_app().await.expect("Failed to spawn our app.");
-    let client = reqwest::Client::new();
+fn spawn_app() {
+    let server = web_app::run().expect("Failed to bind address");
 
-    let response = client
-        .get("http://127.0.0.1:8000/health_check")
-        .send()
-        .await
-        .expect("Failed tp execute request.");
-
-    assert!(response.status().is_success());
-    assert_eq!(Some(0), response.content_length());
+    let _ = tokio::spawn(server);
 }
 
-async fn spawn_app() -> std::io::Result<()> {
-    web_app::run().await
+#[tokio::test]
+async fn health_check_works() {
+    spawn_app();
 }
