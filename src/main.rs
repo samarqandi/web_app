@@ -16,3 +16,7 @@ async fn main() -> std::io::Result<()> {
     .run()
     .await
 }
+
+async fn health_check(req: HttpRequest) -> impl Responder {
+    todo!()
+}
