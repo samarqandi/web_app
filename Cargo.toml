@@ -1,7 +1,15 @@
 [package]
 name = "web_app"
 version = "0.1.0"
+authors = ["Sanjar <san4o.original@gmail.com"]
 edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "web_app"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -9,6 +17,7 @@ edition = "2021"
 actix-web = "4"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 cargo-audit = "0.17.6"
+reqwest = "0.11"
 
 [target.x86_64-unknown-linux-gnu]
 rustflags = ["-C", "linker=clang", "-C", "link-arg=-fuse-ld=lld"]
